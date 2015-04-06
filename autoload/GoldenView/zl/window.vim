@@ -355,10 +355,6 @@ function! GoldenView#zl#window#switch_buffer(bufnr1, bufnr2)
         if bufnr('%') != a:bufnr1
             silent noautocmd exec 'buffer' a:bufnr1
 
-            " need filetype detect (maybe) because bufnr1 disappears for a
-            " moment
-            silent filetype detect
-
             let b:switch_buffer = {
                         \ 'bufnr' : a:bufnr2 ,
                         \ 'winnr' : winnr1   ,
