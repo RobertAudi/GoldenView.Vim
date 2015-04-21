@@ -146,7 +146,7 @@ command! -nargs=0 SwitchGoldenViewSmallest
 " Initialization:                                                         ⟨⟨⟨1
 " ============================================================================
 if g:goldenview__enable_at_startup == 1
-    call GoldenView#EnableAutoResize()
+    autocmd VimEnter * call GoldenView#EnableAutoResize()
 endif
 
 if g:goldenview__enable_default_mapping == 1
