@@ -388,7 +388,15 @@ endfunction
 " Split:                                                                  ⟨⟨⟨1
 " ============================================================================
 function! GoldenView#Split()
+    let oldSplitBelow=&splitbelow
+    let oldSplitRight=&splitright
+    set nosplitbelow
+    set nosplitright
     call GoldenView#zl#window#split_nicely()
+    let &splitbelow = oldSplitBelow
+    let &splitright = oldSplitRight
+    unlet oldSplitBelow
+    unlet oldSplitRight
 endfunction
 
 
