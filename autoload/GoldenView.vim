@@ -170,10 +170,6 @@ function! GoldenView#Enter(...)
         return
     endif
 
-    if &lazyredraw
-        return
-    endif
-
     return call('GoldenView#Resize', a:000)
 endfunction
 
