@@ -13,7 +13,7 @@
 
 
 " ============================================================================
-" Rule:                                                                   [[[1
+" Rule:
 " ============================================================================
 
 " [TODO]( list for at type ) @zhaocai @start(2012-09-27 08:05)
@@ -62,10 +62,10 @@ function! GoldenView#zl#rule#norm(urule, ...)
     endif
 
     let type_expr = {
-                  \   'buftype'  : '&buftype'          , 
-                  \   'filetype' : '&ft'               , 
-                  \   'bufname'  : "bufname('%')"      , 
-                  \   'cword'    : "expand('<cword>')" , 
+                  \   'buftype'  : '&buftype'          ,
+                  \   'filetype' : '&ft'               ,
+                  \   'bufname'  : "bufname('%')"      ,
+                  \   'cword'    : "expand('<cword>')" ,
                   \ }
 
     let type_pat = {}
@@ -326,6 +326,6 @@ endfunction
 
 
 " ============================================================================
-" Modeline:                                                               [[[1
+" Modeline:
 " ============================================================================
-" vim: set ft=vim ts=4 sw=4 tw=78 fdm=marker fmr=[[[,]]] fdl=1 :
+" vim: set ft=vim ts=4 sw=4 tw=78 :

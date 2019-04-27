@@ -11,7 +11,7 @@
 " =============== ============================================================
 
 " ============================================================================
-" Initialization And Profile:                                             ⟨⟨⟨1
+" Initialization And Profile:
 " ============================================================================
 function! GoldenView#ExtendProfile(name, def)
     let default = get(s:goldenview__profile, a:name,
@@ -69,7 +69,7 @@ endfunction
 
 
 " ============================================================================
-" Auto Resize:                                                            ⟨⟨⟨1
+" Auto Resize:
 " ============================================================================
 function! GoldenView#ToggleAutoResize()
     if exists('s:goldenview__auto_resize') && s:goldenview__auto_resize == 1
@@ -385,7 +385,7 @@ endfunction
 
 
 " ============================================================================
-" Split:                                                                  ⟨⟨⟨1
+" Split:
 " ============================================================================
 function! GoldenView#Split()
     call GoldenView#zl#window#split_nicely()
@@ -394,7 +394,7 @@ endfunction
 
 
 " ============================================================================
-" Switch:                                                                 ⟨⟨⟨1
+" Switch:
 " ============================================================================
 function! GoldenView#SwitchMain(...)
     let opts = {
@@ -435,7 +435,7 @@ function! GoldenView#SwitchMain(...)
 endfunction
 
 " ============================================================================
-" Helper Functions:                                                       ⟨⟨⟨1
+" Helper Functions:
 " ============================================================================
 
 function! s:eval(profile, val)
@@ -479,7 +479,7 @@ endfunction
 
 
 " ============================================================================
-" Debug:                                                                  ⟨⟨⟨1
+" Debug:
 " ============================================================================
 
 function! GoldenView#Info()
@@ -506,24 +506,7 @@ function! GoldenView#Info()
     \}
 endfunction
 
-
-function! GoldenView#Trace(...)
-    " -------- - -----------------------------------------------
-    "  Example : >
-    "    GoldenViewTrace 'WinLeave', a:000
-    " -------- - -----------------------------------------------
-
-    call GoldenView#initialize_tab_variable()
-    let info            = GoldenView#Info()
-    let info['context'] = get(g:,'GoldenView_zl_context','')
-    let info['args']    = a:000
-    call GoldenView#zl#log#debug(info)
-endfunction
-
-command! -nargs=* -complete=expression GoldenViewTrace
-    \ exec GoldenView#zl#vim#context() | call GoldenView#Trace(<args>)
-
 " ============================================================================
-" Modeline:                                                               ⟨⟨⟨1
+" Modeline:
 " ============================================================================
-" vim: set ft=vim ts=4 sw=4 tw=78 fdm=syntax fmr=⟨⟨⟨,⟩⟩⟩ fdl=1 :
+" vim: set ft=vim ts=4 sw=4 tw=78 :

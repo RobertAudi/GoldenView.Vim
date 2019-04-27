@@ -18,9 +18,9 @@
 
 
 " ============================================================================
-" Regex Escape:                                                           ⟨⟨⟨1
+" Regex Escape:
 " ============================================================================
-function! GoldenView#zl#regex#escape(text, ...) " (text, ?magic='m')            ⟨⟨⟨2
+function! GoldenView#zl#regex#escape(text, ...) " (text, ?magic='m')
     "--------- ------------------------------------------------
     " Desc    : escape common special characters.
     "
@@ -51,15 +51,15 @@ function! GoldenView#zl#regex#escape(text, ...) " (text, ?magic='m')            
         throw 'unsupported magic type'
         return a:text
     endif
-endfunction " ⟩⟩⟩
+endfunction
 
 
 
 " ----------------------------------------------------------------------------
-" Regex Builder:                                                          ⟨⟨⟨1
+" Regex Builder:
 
 
-function! GoldenView#zl#regex#or(list, ...) "⟨⟨⟨
+function! GoldenView#zl#regex#or(list, ...)
     let opts =
         \ { 'is_capturing' : 0
         \ , 'magic' : 'm'
@@ -83,12 +83,11 @@ function! GoldenView#zl#regex#or(list, ...) "⟨⟨⟨
         \     a:list, 'GoldenView#zl#regex#escape(v:val, "' . opts['magic'] . '")'),
         \     or)
         \ . end
-endfunction "⟩⟩⟩
+endfunction
 
-" ⟩⟩⟩
 
 
 " ============================================================================
-" Modeline:                                                               ⟨⟨⟨1
+" Modeline:
 " ============================================================================
-" vim: set ft=vim ts=4 sw=4 tw=78 fdm=marker fmr=⟨⟨⟨,⟩⟩⟩ fdl=1 :
+" vim: set ft=vim ts=4 sw=4 tw=78 :

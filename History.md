@@ -29,7 +29,7 @@ Changes:
 * 1 Bug Fixes
 
     * load guard for issue #4
-      
+
       E806: using Float as a String
 
 
@@ -99,4 +99,3 @@ Changes:
 ## 1.0 / 2012-09-18
 
  (Zhao Cai <caizhaoff@gmail.com>)
-

@@ -10,7 +10,7 @@
 " =============== ============================================================
 
 " ============================================================================
-" Initialization:                                                         [[[1
+" Initialization:
 " ============================================================================
 
 let s:GOLDENVIEW_ZL_VERSION_CURRENT = 140
@@ -150,7 +150,7 @@ function! GoldenView#zl#rc#init_python()
     elseif has("python")
         let g:GoldenView_zl_py = 'py'
         let g:GoldenView_zl_pyeval = 'pyeval'
-    else 
+    else
         let g:GoldenView_zl_py = ''
         let g:GoldenView_zl_pyeval = ''
     endif
@@ -159,7 +159,7 @@ endfunction
 
 
 " ============================================================================
-" Set Initialization Default Variables:                                   [[[1
+" Set Initialization Default Variables:
 " ============================================================================
 function! GoldenView#zl#rc#set_default(var, ...)
     "--------- ------------------------------------------------
@@ -209,7 +209,7 @@ endfunction
 
 
 "
-" Note: 
+" Note:
 "   add this call to other files if they need to check g:loaded_GoldenView_zl
 " or g:GoldenView_zl_install_path
 "
@@ -217,6 +217,6 @@ call GoldenView#zl#rc#init()
 
 
 " ============================================================================
-" Modeline:                                                               [[[1
+" Modeline:
 " ============================================================================
-" vim: set ft=vim ts=4 sw=4 tw=78 fdm=marker fmr=[[[,]]] fdl=1 :
+" vim: set ft=vim ts=4 sw=4 tw=78 :

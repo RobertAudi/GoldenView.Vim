@@ -11,10 +11,10 @@
 " =============== ============================================================
 
 " ============================================================================
-" Load Guard:                                                             ⟨⟨⟨1
+" Load Guard:
 " ============================================================================
 if !GoldenView#zl#rc#load_guard(
-	\ expand('<sfile>:t:r'), 700, 130, ['!&cp', "has('float')"])
+    \ expand('<sfile>:t:r'), 700, 130, ['!&cp', "has('float')"])
     finish
 endif
 
@@ -23,7 +23,7 @@ set cpo&vim
 
 
 " ============================================================================
-" Settings:                                                               ⟨⟨⟨1
+" Settings:
 " ============================================================================
 
 call GoldenView#zl#rc#set_default({
@@ -43,10 +43,10 @@ call GoldenView#zl#rc#set_default({
     \     'nofile'  ,
     \   ],
     \   'bufname' : [
-    \     'GoToFile'                  , 'diffpanel_\d\+'      , 
-    \     '__Gundo_Preview__'         , '__Gundo__'           , 
-    \     '\[LustyExplorer-Buffers\]' , '\-MiniBufExplorer\-' , 
-    \     '_VOOM\d\+$'                , '__Urannotate_\d\+__' , 
+    \     'GoToFile'                  , 'diffpanel_\d\+'      ,
+    \     '__Gundo_Preview__'         , '__Gundo__'           ,
+    \     '\[LustyExplorer-Buffers\]' , '\-MiniBufExplorer\-' ,
+    \     '_VOOM\d\+$'                , '__Urannotate_\d\+__' ,
     \     '__MRU_Files__' , 'FencView_\d\+$'
     \   ],
     \ },
@@ -55,7 +55,7 @@ call GoldenView#zl#rc#set_default({
     \     'nerdtree', 'vimfiler',
     \   ],
     \   'bufname' : [
-    \     '__MRU_Files__' , 
+    \     '__MRU_Files__' ,
     \   ],
     \ },
     \
@@ -64,7 +64,7 @@ call GoldenView#zl#rc#set_default({
 
 
 " ============================================================================
-" Public Interface:                                                       ⟨⟨⟨1
+" Public Interface:
 " ============================================================================
 
 
@@ -143,7 +143,7 @@ command! -nargs=0 SwitchGoldenViewSmallest
 
 
 " ============================================================================
-" Initialization:                                                         ⟨⟨⟨1
+" Initialization:
 " ============================================================================
 if g:goldenview__enable_at_startup == 1
     call GoldenView#EnableAutoResize()
@@ -171,7 +171,6 @@ let &cpo = s:save_cpo
 unlet s:save_cpo
 
 " ============================================================================
-" Modeline:                                                               ⟨⟨⟨1
+" Modeline:
 " ============================================================================
-" vim: set ft=vim ts=4 sw=4 tw=78 fdm=marker fmr=⟨⟨⟨,⟩⟩⟩ fdl=1 :
-
+" vim: set ft=vim ts=4 sw=4 tw=78 :

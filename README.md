@@ -340,4 +340,3 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 [vim-plugin-manager]: http://vim-scripts.org/vim/tools.html "Vim Plugin Manangers"
 [GoldenViewIssue]: https://github.com/zhaocai/GoldenView.Vim/issues "GoldenView Issue Track"
 [minibufexpl.vim]: https://github.com/zhaocai/minibufexpl.vim
-
