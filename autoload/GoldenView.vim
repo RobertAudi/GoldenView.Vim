@@ -165,6 +165,9 @@ function! GoldenView#Diff()
 endfunction
 
 function! GoldenView#Enter(...)
+    if exists("g:SessionLoad") && g:SessionLoad
+        return
+    endif
 
     if GoldenView#Diff()
         return
