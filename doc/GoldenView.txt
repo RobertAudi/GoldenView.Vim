@@ -1,77 +1,52 @@
 *GoldenView.txt*  Always have a nice view for vim split windows
 
 ===============================================================================
-CONTENTS                                                   *goldenview-contents*
+CONTENTS                                                    *goldenview-contents*
 
-  1. Introduction                                      |goldenview-introduction|
-  2. Features                                              |goldenview-features|
-    1. 1. AutoResizing                              |goldenview-1.-autoresizing|
-    2. 2. Tiled Windows Management      |goldenview-2.-tiled-windows-management|
-  3. Quick Start                                        |goldenview-quick-start|
-      1. |g:goldenview__enable_default_mapping|
-      2. |g:goldenview__enable_at_startup|
-  4. More Commands and Mappings          |goldenview-more-commands-and-mappings|
-    1. |:ToggleGoldenViewAutoResize|
-    2. |:DisableGoldenViewAutoResize|
-    3. |:EnableGoldenViewAutoResize|
-    4. |:GoldenViewResize|
-    5. |:SwitchGoldenViewLargest|
-    6. |:SwitchGoldenViewSmallest|
-  5. Rules                                                    |goldenview-rules|
-    1. |g:goldenview__ignore_urule|
-    2. |g:goldenview__restore_urule|
-  6. Profiles                                              |goldenview-profiles|
-    1. |g:goldenview__active_profile|
-    2. |g:goldenview__reset_profile|
-  7. Troubleshooting:                              |goldenview-troubleshooting:|
-    1. Please do not resize me!             |goldenview-please-do-not-resize-me|
-  8. RELEASE HISTORY                                |goldenview-release-history|
-  9. LICENSE:                                              |goldenview-license:|
+  1. Introduction                                       |goldenview-introduction|
+  2. Features                                               |goldenview-features|
+  3. Commands                                               |goldenview-commands|
+  4. Configuration                                     |goldenview-configuration|
+    4.1. Rules                                                 |goldenview-rules|
+    4.2. Profiles                                           |goldenview-profiles|
+  5. Troubleshooting                                 |goldenview-troubleshooting|
+  6. Changelog                                             |goldenview-changelog|
+  7. License                                                 |goldenview-license|
 
 ===============================================================================
-INTRODUCTION                                           *goldenview-introduction*
->
-    ------------- - -----------------------------------------------
-    Plugin        : GoldenView.vim
-    Author        : Zhao Cai
-    EMail         : caizhaoff@gmail.com
-    URL           : https://github.com/RobertAudi/GoldenView.Vim
-    Version       : 1.3.6
-    Date Created  : Tue 18 Sep 2012 05:23:13 PM EDT
-    Last Modified : Wed 17 Apr 2013 09:52:45 PM EDT
-    ------------- - -----------------------------------------------
+1. Introduction                                         *goldenview-introduction*
 
-The initial motive for GoldenView [1] comes from the frustration of using
+The initial motive for GoldenView comes from the frustration of using
 other vim plugins to auto-resize split windows. The idea is deadly simple and
 very useful: resize the focused window to a proper size. However, in practice,
 many hiccups makes auto-resizing not a smooth experience. Below are a list of
-issues GoldenView [1] attempts to solve:
+issues GoldenView attempts to solve:
 
 First and the most important one, auto-resizing should play nicely with
-existing plugins like 'tagbar', 'vimfiler', 'unite', 'VOoM', 'quickfix',
-'undotree', 'gundo', etc. These windows should manage there own window size.
+existing plugins like |Tagbar|, |NERDTree|, |unite|, |undotree|, etc.
+These windows should manage there own window size.
 
 Second, auto-resizing should take care of the other windows too. Resizing the
 focused window may cause the other windows become too small. When you have 4+
 split windows, auto-resizing may just make a mess out of it.
 
 ===============================================================================
-FEATURES                                                   *goldenview-features*
+2. Features                                                 *goldenview-features*
 
-GoldenView [1] has preliminarily solved the issues described above. It also
+GoldenView has preliminarily solved the issues described above. It also
 provides other features. Basically, it does two things:
 
--------------------------------------------------------------------------------
-1. AUTORESIZING                                     *goldenview-1.-autoresizing*
+Auto-Resizing~
 
 First of all, it automatically resize the focused split window to a "golden"
-view based on golden ratio [2] and 'textwidth'.
+view based on golden ratio [1] and 'textwidth'. >
+    https://en.wikipedia.org/wiki/Golden_ratio
+<
 
--------------------------------------------------------------------------------
-2. TILED WINDOWS MANAGEMENT             *goldenview-2.-tiled-windows-management*
+Tiled Windows Management~
 
-Second, it maps a single key ('<C-L>' by default) to nicely split windows to
-tiled windows.
+Second, it exposes '<Plug>GoldenViewSplit' to nicely split windows to tiled
+windows.
 >
     ----+----------------+------------+---+
     |   |                |            |   |
@@ -83,9 +58,10 @@ tiled windows.
     |   |                |            | R |
     |   |                |            |   |
     +---+----------------+------------+---+
+<
 
-To get this view, just hit '<C-L>' 4 times. or, if you have a large monitor,
-you may get tiled windows below.
+To get this view, just hit the mapped key 4 times. If you have a large
+monitor, you may get tiled windows below.
 >
     ----+---------------+--------------+------------+---+
     |   |               |              |            |   |
@@ -97,185 +73,134 @@ you may get tiled windows below.
     |   |               |              |            | B |
     |   |               |              |            |   |
     +---+---------------+--------------+------------+---+
-
-To quickly switch between those windows, a few keys are mapped to
-
-- Focus to the main window
-
-- Switch with the 'MAIN PANE', the largest, smallest, etc.
-
-- Jump to the next and previous window
+<
 
 ===============================================================================
-QUICK START                                             *goldenview-quick-start*
+3. Commands                                                 *goldenview-commands*
 
-GoldenView [1] should work out of the box without configuration. It should
-automatically start to resize focused window to golden ratio [2] based on
-'textwidth' and vim available size. You may start to play with it now.
+                                                    *:ToggleGoldenViewAutoResize*
+:ToggleGoldenViewAutoResize~
 
-To get you started, a few default keys are mapped as below:
->
-    " 1. split to tiled windows
-    nmap <silent> <C-L>  <Plug>GoldenViewSplit
+Toggle auto-resizing.
 
-    " 2. quickly switch current window with the main pane
-    " and toggle back
-    nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
-    nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+                                                   *:DisableGoldenViewAutoResize*
+:DisableGoldenViewAutoResize~
 
-    " 3. jump to next and previous window
-    nmap <silent> <C-N>  <Plug>GoldenViewNext
-    nmap <silent> <C-P>  <Plug>GoldenViewPrevious
+Disable auto-resizing.
 
-The meaning of those keys are self-explaining. A general workflow would be
-'<Plug>GoldenViewSplit' key to quickly and nicely split windows to the layout
-as below. Then you may open your files.
->
-    ----+----------------+------------+---+
-    |   |                |            |   |
-    | F |                |    S1      | T |
-    | I |                +------------| A |
-    | L |                |    S2      | G |
-    | E |   MAIN PANE    +------------+ B |
-    | R |                |    S3      | A |
-    |   |                |            | R |
-    |   |                |            |   |
-    +---+----------------+------------+---+
+                                                    *:EnableGoldenViewAutoResize*
+:EnableGoldenViewAutoResize~
 
-To switch 'S1' with 'MAIN PANE', in 'S1' and hit '<Plug>GoldenViewSwitchMain'.
-To switch back, hit '<Plug>GoldenViewSwitchToggle' in either 'MAIN PAIN' or
-'S1'
+Enable auto-resizing.
 
--------------------------------------------------------------------------------
-*g:goldenview__enable_default_mapping*
+                                                              *:GoldenViewResize*
+:GoldenViewResize~
 
-Every experienced vim user has a different set of key mappings. If you you are
-(most likely) unhappy about some of the mappings, map you own keys as below:
->
-    let g:goldenview__enable_default_mapping = 0
-
-    nmap <silent> <MY_KEY> <Plug>GoldenViewSplit
-    " ... and so on
-
--------------------------------------------------------------------------------
-*g:goldenview__enable_at_startup*
-
-if you do not want to start auto-resizing automatically, you can put 'let
-g:goldenview__enable_at_startup = 0' in your vimrc.
+Resize the current window.
 
 ===============================================================================
-MORE COMMANDS AND MAPPINGS               *goldenview-more-commands-and-mappings*
+4. Configuration                                       *goldenview-configuration*
+
+                                                *g:goldenview__enable_at_startup*
+g:goldenview__enable_at_startup~
+
+Values: 0 or 1
+Default: 0
+
+Controls whether or not auto-resizing is enabled at startup.
 
 -------------------------------------------------------------------------------
-*:ToggleGoldenViewAutoResize*
+4.2 Rules                                                      *goldenview-rules*
+
+                                                     *g:goldenview__ignore_urule*
+g:goldenview__ignore_urule~
+
+Allow special buffers to manage their own window size.
+
+Values: a dictionary
+Default: >
+    let g:goldenview__ignore_urule =
+          \ {
+          \   'filetype': [
+          \     '', 'qf', 'vimpager', 'undotree', 'tagbar',
+          \     'nerdtree', 'vimshell', 'vimfiler', 'voom',
+          \     'tabman', 'unite', 'quickrun', 'Decho',
+          \     'ControlP', 'diff', 'extradite'
+          \   ],
+          \   'buftype': [
+          \     'nofile',
+          \   ],
+          \   'bufname': [
+          \     'GoToFile', 'diffpanel_\d\+',
+          \     '__Gundo_Preview__', '__Gundo__',
+          \     '\[LustyExplorer-Buffers\]', '\-MiniBufExplorer\-',
+          \     '_VOOM\d\+$', '__Urannotate_\d\+__',
+          \     '__MRU_Files__', 'FencView_\d\+$'
+          \   ],
+          \ }
+<
+
+                                                    *g:goldenview__restore_urule*
+g:goldenview__restore_urule~
+
+Restore the window size of some of special buffers.
+
+The 'urule' (user rules) will be normalized at runtime for faster processing.
+
+Values: a dictionary
+Default: >
+    let g:goldenview__restore_urule =
+          \ {
+          \   'g:goldenview__restore_urule': {
+          \     'filetype': [
+          \       'nerdtree', 'vimfiler',
+          \     ],
+          \     'bufname': [
+          \       '__MRU_Files__',
+          \     ],
+          \   },
+          \ }
+<
 
 -------------------------------------------------------------------------------
-*:DisableGoldenViewAutoResize*
+4.2 Profiles                                                *goldenview-profiles*
 
--------------------------------------------------------------------------------
-*:EnableGoldenViewAutoResize*
+                                                   *g:goldenview__active_profile*
+g:goldenview__active_profile~
 
-These commands toggle, enable, and disable GoldenView auto-resizing.
+Values: a string
+Default: "default"
 
--------------------------------------------------------------------------------
-*:GoldenViewResize*
+Determines the profile to use when auto-resizing is enabled.
 
-this command do manual resizing of focused window.
+                                                    *g:goldenview__reset_profile*
+g:goldenview__reset_profile~
 
-You can also map a key for this as below:
->
-    nmap <silent> <YOUR_KEY> <Plug>GoldenViewResize
+Values: a string
+Default: "reset"
 
--------------------------------------------------------------------------------
-*:SwitchGoldenViewLargest*
-
--------------------------------------------------------------------------------
-*:SwitchGoldenViewSmallest*
-
-these commands do as it named.
-
-You can also add mappings as below. (no default keys for these mappings)
->
-    nmap <silent> <YOUR_KEY> <Plug>GoldenViewSwitchWithLargest
-    nmap <silent> <YOUR_KEY> <Plug>GoldenViewSwitchWithSmallest
-
-Other switch rules can be easily defined.
+Determines the profile to use when auto-resizing is disabled.
 
 ===============================================================================
-RULES                                                         *goldenview-rules*
+5. Troubleshooting                                   *goldenview-troubleshooting*
 
-GoldenView [1] defines two rules:
+PLEASE DO NOT RESIZE ME!~
 
--------------------------------------------------------------------------------
-*g:goldenview__ignore_urule*
-
-Is to "ignore" - allow those special buffers to manage their own window size.
-
--------------------------------------------------------------------------------
-*g:goldenview__restore_urule*
-
-Is to "restore" - restore window size of some of special buffers.
-
-The 'urule' (user rules) are like this, which will be normalize at runtime for
-faster processing.
->
-    \ {
-    \    'filetype' : [
-    \      ''        ,
-    \      'qf'      , 'vimpager', 'undotree', 'tagbar',
-    \      'nerdtree', 'vimshell', 'vimfiler', 'voom'  ,
-    \      'tabman'  , 'unite'   , 'quickrun', 'Decho' ,
-    \    ],
-    \    'buftype' : [
-    \      'nofile'  ,
-    \    ],
-    \    'bufname' : [
-    \      'GoToFile'                  , 'diffpanel_\d\+'      ,
-    \      '__Gundo_Preview__'         , '__Gundo__'           ,
-    \      '\[LustyExplorer-Buffers\]' , '\-MiniBufExplorer\-' ,
-    \      '_VOOM\d\+$'                , '__Urannotate_\d\+__' ,
-    \      '__MRU_Files__' ,
-    \    ],
-    \ },
-
-===============================================================================
-PROFILES                                                   *goldenview-profiles*
-
-GoldenView [1] defines two profile:
-
--------------------------------------------------------------------------------
-*g:goldenview__active_profile*
-
-Defines the functions and preferences to auto resize windows.
-
--------------------------------------------------------------------------------
-*g:goldenview__reset_profile*
-
-Defines reset preferences to restore everything to default.
-
-'function GoldenView#ExtendProfile()' is provided to customize preferences.
-
-For more details, please read the source code! :)
-
-===============================================================================
-TROUBLESHOOTING:                                   *goldenview-troubleshooting:*
-
--------------------------------------------------------------------------------
-PLEASE DO NOT RESIZE ME!                    *goldenview-please-do-not-resize-me*
-
-GoldenView [1] maintains rules for "common" cases. But vim offers a great
+GoldenView maintains rules for "common" cases. But vim offers a great
 variety of plugins which defines buffers for special purposes. If you find
-some special buffers which is supposed to not be auto-resized. Please check
-|g:goldenview__ignore_urule|.
+some special buffers which is supposed to not be auto-resized.
+Please check |g:goldenview__ignore_urule|.
 You may also extend the |g:goldenview__active_profile| yourself.
 
 ===============================================================================
-RELEASE HISTORY                                     *goldenview-release-history*
+6. Changelog                                               *goldenview-changelog*
 
-Refer to the Changelog [3]
+Refer to the Changelog: >
+    https://github.com/RobertAudi/GoldenView.vim/blob/master/CHANGELOG.md
+<
 
 ===============================================================================
-LICENSE:                                                   *goldenview-license:*
+7. License                                                   *goldenview-license*
 
 Copyright (c) 2013 Zhao Cai <caizhaoff@gmail.com>
 
@@ -289,14 +214,6 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
-this program. If not, see 'http://www.gnu.org/licenses/' [4].
+this program. If not, see 'http://www.gnu.org/licenses/'.
 
-===============================================================================
-REFERENCES                                               *goldenview-references*
-
-[1] https://github.com/RobertAudi/GoldenView.Vim
-[2] https://en.wikipedia.org/wiki/Golden_ratio
-[3] https://github.com/RobertAudi/GoldenView.Vim/blob/master/CHANGELOG.md
-[4] https://www.gnu.org/licenses/
-
-vim: ft=help
+ vim: ft=help

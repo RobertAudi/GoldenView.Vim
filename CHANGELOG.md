@@ -1,101 +1,119 @@
-# RELEASE HISTORY
+Changelog
+=========
 
-## V1.3.0 / 2013-04-22
+v1.4.0 / 2019-04-27
+-------------------
+
+Only keep the functionality to auto-resize. @RobertAudi
+
+### Changes
+
+- Remove commands to switch window:
+  - `:SwitchGoldenViewMain`
+  - `:SwitchGoldenViewToggle`
+  - `:SwitchGoldenViewLargest`
+  - `:SwitchGoldenViewSmallest`
+- Remove default mappings.
+- Remove the `g:goldenview__enable_default_mapping` option.
+- Remove unused [zl.vim][] functions.
+
+v1.3.0 / 2013-04-22
+-------------------
 
 Diff Mode auto resizing (Zhao Cai <caizhaoff@gmail.com>)
 
-Changes:
+### Changes:
 
-* 1 Major Enhancements
+#### Major Enhancements
 
-    * diff mode auto-resizing.
+- Diff mode auto-resizing.
 
-* 1 Minor Enhancements
+#### Minor Enhancements
 
-    * refactor autocmd function: tweak restore behavior
+- Refactor `autocmd` function: tweak restore behavior.
 
+v1.2.2 / 2013-04-21
+-------------------
 
-## V1.2.2 / 2013-04-21
+Improve documents and small bug fixes, Load guard for [#4][issue-4] (Zhao Cai <caizhaoff@gmail.com>)
 
-Improve documents and small bug fixes,
-Load guard for #4 (github) (Zhao Cai <caizhaoff@gmail.com>)
+### Changes:
 
-Changes:
+#### Minor Enhancements
 
-* 1 Minor Enhancements
+- Better tracing.
 
-    * better tracing
+#### Bug Fixes
 
-* 1 Bug Fixes
+- Load guard for issue [#4][issue-4].
 
-    * load guard for issue #4
+```text
+E806: using Float as a String
+```
 
-      E806: using Float as a String
+[issue-4]: https://github.com/zhaocai/GoldenView.Vim/issues/4
 
-
-## V1.2.0 / 2013-04-18
-
- (Zhao Cai <caizhaoff@gmail.com>)
-
-Changes:
-
-* 1 Major Enhancements
-
-    * add restore rule for some special buffers
-
-* 4 Bug Fixes
-
-    * E36 no enough room to split
-    * issue #2 MRU plugin window
-    * init sequence
-    * zl load guard
-
-
-## V1.1.2 / 2013-04-18
-
-Fix init sequence between zl.vim and GoldenVim (Zhao Cai <caizhaoff@gmail.com>)
-
-
-## HEAD / 2013-04-23
-
-Current Development (Zhao Cai)
-
-
-## V1.1.1 / 2013-04-18
-
-improve documents, fix zl library load (Zhao Cai <caizhaoff@gmail.com>)
-
-
-## V1.1.0 / 2013-04-18
+v1.2.0 / 2013-04-18
+-------------------
 
  (Zhao Cai <caizhaoff@gmail.com>)
 
-Changes:
+### Changes:
 
-* 3 Major Enhancements
+#### Major Enhancements
 
-    * add WinLeave event into account. This version works perfectly.
-    * fix various hiccups caused by winleave
-    * use ignore rules from zl.vim
+- Add restore rule for some special buffers.
 
-* 4 Minor Enhancements
+#### Bug Fixes
 
-    * add mapping to switch to main pane. [minor] speed up buffer switch with noautocmd
-    * include zl.vim into source code
-    * tune for autocmd sequence
-    * treat winfixwidth and winfixheight separately
+- `E36 Not enough room` to split.
+- Issue [#2](https://github.com/zhaocai/GoldenView.Vim/issues/2) MRU plugin window.
+- Init sequence.
+- [zl.vim][] load guard.
 
-* 2 Bug Fixes
+v1.1.2 / 2013-04-18
+-------------------
 
-    * winleave cause ignored windows resized
-    * cannot let &winminwidth > &winwidth
+Fix init sequence between [zl.vim][] and GoldenVim. (Zhao Cai <caizhaoff@gmail.com>)
 
-* 2 Nominal Changes
+v1.1.1 / 2013-04-18
+-------------------
 
-    * change profile variable scope to s:
-    * tweak golden ratio for win size
+Improve documents, fix [zl.vim][] library load. (Zhao Cai <caizhaoff@gmail.com>)
 
-
-## 1.0 / 2012-09-18
+v1.1.0 / 2013-04-18
+-------------------
 
  (Zhao Cai <caizhaoff@gmail.com>)
+
+### Changes:
+
+#### Major Enhancements
+
+- Add `WinLeave` event into account. This version works perfectly.
+- Fix various hiccups caused by `WinLeave`.
+- Use ignore rules from [zl.vim][].
+
+#### Minor Enhancements
+
+- Add mapping to switch to main pane. [minor] speed up buffer switch with `noautocmd`.
+- Include [zl.vim][] into source code.
+- Tune for `autocmd` sequence.
+- Treat `winfixwidth` and `winfixheight` separately.
+
+#### Bug Fixes
+
+- `WinLeave` cause ignored windows resized.
+- Cannot let `&winminwidth > &winwidth`.
+
+#### Nominal Changes
+
+- Change profile variable scope to `s:`
+- Tweak golden ratio for win size
+
+v1.0 / 2012-09-18
+----------------
+
+ (Zhao Cai <caizhaoff@gmail.com>)
+
+[zl.vim]: https://github.com/zhaocai/zl.vim
