@@ -170,10 +170,6 @@ function! GoldenView#Enter(...)
         return
     endif
 
-    if &lazyredraw
-        return
-    endif
-
     return call('GoldenView#Resize', a:000)
 endfunction
 
@@ -388,7 +384,15 @@ endfunction
 " Split:
 " ============================================================================
 function! GoldenView#Split()
+    let oldSplitBelow=&splitbelow
+    let oldSplitRight=&splitright
+    set nosplitbelow
+    set nosplitright
     call GoldenView#zl#window#split_nicely()
+    let &splitbelow = oldSplitBelow
+    let &splitright = oldSplitRight
+    unlet oldSplitBelow
+    unlet oldSplitRight
 endfunction
 
 
