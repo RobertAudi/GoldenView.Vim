@@ -270,7 +270,7 @@ echo GoldenView#Info()
 RELEASE HISTORY
 ---------------
 
-Refer to [History.md](History.md).
+Refer to the [Changelog](CHANGELOG.md).
 
 LICENSE:
 --------

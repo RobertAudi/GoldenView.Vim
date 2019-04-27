@@ -272,7 +272,7 @@ You may also extend the |g:goldenview__active_profile| yourself.
 ===============================================================================
 RELEASE HISTORY                                     *goldenview-release-history*
 
-Refer to History.md [3]
+Refer to the Changelog [3]
 
 ===============================================================================
 LICENSE:                                                   *goldenview-license:*
@@ -296,7 +296,7 @@ REFERENCES                                               *goldenview-references*
 
 [1] https://github.com/RobertAudi/GoldenView.Vim
 [2] https://en.wikipedia.org/wiki/Golden_ratio
-[3] https://github.com/RobertAudi/GoldenView.Vim/blob/master/History.md
+[3] https://github.com/RobertAudi/GoldenView.Vim/blob/master/CHANGELOG.md
 [4] https://www.gnu.org/licenses/
 
 vim: ft=help
