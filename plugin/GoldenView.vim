@@ -42,8 +42,8 @@ if !exists('g:goldenview__ignore_urule')
         \   'filetype': [
         \     '', 'qf', 'vimpager', 'undotree', 'tagbar',
         \     'nerdtree', 'vimshell', 'vimfiler', 'voom',
-        \     'tabman', 'unite', 'quickrun', 'Decho',
-        \     'ControlP', 'diff', 'extradite'
+        \     'tabman', 'denite', 'denite-filter', 'unite',
+        \     'quickrun', 'Decho', 'ControlP', 'diff', 'extradite'
         \   ],
         \   'buftype': [
         \     'nofile',
