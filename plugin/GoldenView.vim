@@ -61,14 +61,12 @@ endif
 if !exists('g:goldenview__restore_urule')
   let g:goldenview__restore_urule =
         \ {
-        \   'g:goldenview__restore_urule': {
-        \     'filetype': [
-        \       'nerdtree', 'vimfiler',
-        \     ],
-        \     'bufname': [
-        \       '__MRU_Files__',
-        \     ],
-        \   },
+        \   'filetype': [
+        \     'nerdtree', 'vimfiler',
+        \   ],
+        \   'bufname': [
+        \     '__MRU_Files__',
+        \   ],
         \ }
 endif
 
